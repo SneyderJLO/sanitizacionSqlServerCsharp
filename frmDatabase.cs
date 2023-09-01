@@ -91,42 +91,35 @@ namespace sanitizacionMejorado
         {
             Random rand = new Random();
             DataTable dataTableSanitizada = dataTable.Clone();
+
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 DataRow filaNueva = dataTableSanitizada.NewRow();
                 for (int j = 0; j < dataTable.Columns.Count; j++)
                 {
-                    var valorActual = dataTable.Rows[i][j];
+                    object valorActual = dataTable.Rows[i][j];
 
                     bool esDigito = valorActual.ToString().All(char.IsDigit);
                     if (esDigito)
                     {
-                        int random = 1;
-                        string max = valorActual.ToString() + "";
-                        switch (max.Length)
+                        long random = 1;
+                        var value = valorActual;
+                        long val = long.Parse(value.ToString());
+                        string valu = val.ToString();
+                        char[] valArray = valu.ToCharArray();
+                        //MessageBox.Show(valu + "");
+                        int max = valu.Length;
+                        string var = "";
+
+                        for (int x = 0; x < valArray.Length; x++)
                         {
-
-                            case int n when n > 0 && n < 10:
-                                // La longitud de la cadena está entre 1 y 9 (inclusive), establece un valor aleatorio entre 101 y 200
-                                random = rand.Next(1, 9);
-                                break;
-
-                            case int n when n >= 10 && n <= 99:
-                                // La longitud de la cadena está entre 10 y 100 (inclusive), establece un valor aleatorio entre 201 y 300
-                                random = rand.Next(1, 99);
-                                break;
-
-                            case int n when n > 99 && n <= 1000:
-                                // La longitud de la cadena está entre 101 y 1000 (inclusive), establece un valor aleatorio entre 301 y 400
-                                random = rand.Next(100, 9999);
-                                break;
-
-                            default:
-                                // Si la longitud de la cadena no coincide con ninguno de los casos anteriores, establece un valor predeterminado
-                                random = max.Length;
-                                break;
+                            //MessageBox.Show(valArray[x].ToString());
+                            valArray[x] = '9';
+                            var += valArray[x].ToString();
                         }
 
+                        long result = long.Parse(var);
+                        random = rand.Next(1, (int)(result));
                         valorActual = random;
 
                     }
@@ -138,7 +131,6 @@ namespace sanitizacionMejorado
                             char[] nuevaPalabra = new char[match.Length];
                             for (int i = 0; i < match.Length; i++)
                             {
-
                                 nuevaPalabra[i] = caracteresAleatorios[rand.Next(caracteresAleatorios.Length)];
 
                             }
@@ -164,6 +156,13 @@ namespace sanitizacionMejorado
 
 
             return dataTableSanitizada;
+        }
+
+        private long ReplaceValueWith9(long valorActual)
+        {
+            long numberOfDigits = (long)Math.Floor(Math.Log10(valorActual) + 1);
+            long replacedNumber = (long)(Math.Pow(10, numberOfDigits) - 1);
+            return replacedNumber;
         }
 
         private List<string> ObtenerTablasSeleccionadas()

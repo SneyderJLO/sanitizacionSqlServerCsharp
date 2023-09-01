@@ -45,6 +45,7 @@
             panel6 = new Panel();
             cmbTablas = new ComboBox();
             label1 = new Label();
+            panel8 = new Panel();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
@@ -61,8 +62,9 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1424, 633);
+            panel1.Size = new Size(1199, 475);
             panel1.TabIndex = 0;
             // 
             // panel3
@@ -70,18 +72,20 @@
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(384, 0);
+            panel3.Location = new Point(336, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1040, 633);
+            panel3.Size = new Size(863, 475);
             panel3.TabIndex = 1;
             // 
             // panel5
             // 
             panel5.Controls.Add(dtgDatos);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 114);
+            panel5.Location = new Point(0, 86);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1040, 519);
+            panel5.Size = new Size(863, 389);
             panel5.TabIndex = 1;
             // 
             // dtgDatos
@@ -116,7 +120,6 @@
             dtgDatos.Dock = DockStyle.Fill;
             dtgDatos.GridColor = Color.FromArgb(224, 225, 221);
             dtgDatos.Location = new Point(0, 0);
-            dtgDatos.Margin = new Padding(3, 4, 3, 4);
             dtgDatos.MultiSelect = false;
             dtgDatos.Name = "dtgDatos";
             dtgDatos.ReadOnly = true;
@@ -140,7 +143,7 @@
             dtgDatos.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dtgDatos.RowTemplate.Height = 25;
             dtgDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgDatos.Size = new Size(1040, 519);
+            dtgDatos.Size = new Size(863, 389);
             dtgDatos.TabIndex = 2;
             // 
             // panel4
@@ -150,17 +153,20 @@
             panel4.Controls.Add(button1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1040, 114);
+            panel4.Size = new Size(863, 86);
             panel4.TabIndex = 0;
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button1.BackColor = SystemColors.ControlDarkDark;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(780, 25);
+            button1.Location = new Point(620, 20);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(248, 46);
+            button1.Size = new Size(217, 34);
             button1.TabIndex = 0;
             button1.Text = "Sanitizar datos";
             button1.UseVisualStyleBackColor = false;
@@ -175,26 +181,30 @@
             panel2.Controls.Add(panel6);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(384, 633);
+            panel2.Size = new Size(336, 475);
             panel2.TabIndex = 0;
             // 
             // panel7
             // 
             panel7.Controls.Add(flowColumnas);
+            panel7.Controls.Add(panel8);
             panel7.Dock = DockStyle.Bottom;
-            panel7.Location = new Point(0, 157);
+            panel7.Location = new Point(0, 117);
+            panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(382, 474);
+            panel7.Size = new Size(334, 356);
             panel7.TabIndex = 2;
             // 
             // flowColumnas
             // 
             flowColumnas.Dock = DockStyle.Fill;
             flowColumnas.FlowDirection = FlowDirection.TopDown;
-            flowColumnas.Location = new Point(0, 0);
+            flowColumnas.Location = new Point(26, 0);
+            flowColumnas.Margin = new Padding(3, 2, 3, 2);
             flowColumnas.Name = "flowColumnas";
-            flowColumnas.Size = new Size(382, 474);
+            flowColumnas.Size = new Size(308, 356);
             flowColumnas.TabIndex = 0;
             // 
             // checkBox1
@@ -202,9 +212,10 @@
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
             checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            checkBox1.Location = new Point(179, 123);
+            checkBox1.Location = new Point(171, 92);
+            checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(167, 30);
+            checkBox1.Size = new Size(132, 22);
             checkBox1.TabIndex = 1;
             checkBox1.Text = "Seleccionar todos";
             checkBox1.TextAlign = ContentAlignment.MiddleRight;
@@ -217,34 +228,45 @@
             panel6.Controls.Add(label1);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(382, 114);
+            panel6.Size = new Size(334, 86);
             panel6.TabIndex = 0;
             // 
             // cmbTablas
             // 
             cmbTablas.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTablas.Location = new Point(27, 57);
+            cmbTablas.Location = new Point(24, 43);
+            cmbTablas.Margin = new Padding(3, 2, 3, 2);
             cmbTablas.Name = "cmbTablas";
-            cmbTablas.Size = new Size(319, 28);
+            cmbTablas.Size = new Size(280, 23);
             cmbTablas.TabIndex = 1;
             cmbTablas.SelectedIndexChanged += cmbTablas_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 25);
+            label1.Location = new Point(24, 19);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(39, 15);
             label1.TabIndex = 0;
             label1.Text = "Tablas";
             // 
+            // panel8
+            // 
+            panel8.Dock = DockStyle.Left;
+            panel8.Location = new Point(0, 0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(26, 356);
+            panel8.TabIndex = 0;
+            // 
             // frmDatabase
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1424, 633);
+            ClientSize = new Size(1199, 475);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmDatabase";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmDatabase";
@@ -276,5 +298,6 @@
         private Label label1;
         private Panel panel7;
         private FlowLayoutPanel flowColumnas;
+        private Panel panel8;
     }
 }

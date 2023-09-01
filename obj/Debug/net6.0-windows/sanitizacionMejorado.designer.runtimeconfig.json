@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\kikin\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\kikin\\.nuget\\packages",
+      "C:\\Users\\usrTechsoft\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\usrTechsoft\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {

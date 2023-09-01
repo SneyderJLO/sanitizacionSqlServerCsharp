@@ -15,18 +15,22 @@ namespace sanitizacionMejorado
             InitializeComponent();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private async void btnBuscar_Click(object sender, EventArgs e)
         {
             flowDB.Controls.Clear();
             try
             {
-                string connectionString = $"Data Source={txtServidor.Text};Integrated Security=True;";
+                //string connectionString = $"Data Source={txtServidor.Text};Integrated Security=True;";
+                //   string connectionString = $"Data Source={txtServidor.Text};user=sa; password=123*abc*456;";
+                connectionStringBuilder.DataSource = txtServidor.Text;
+                //connectionStringBuilder.InitialCatalog = dataBase;
+                connectionStringBuilder.UserID = txtUsuario.Text;
+                connectionStringBuilder.Password = txtPassword.Text;
 
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(connectionStringBuilder.ToString()))
                 {
                     connection.Open();
-
+                    flagConexion = true;
                     // Consulta SQL para obtener los nombres de las bases de datos
                     string query = "SELECT name FROM sys.databases WHERE database_id > 4"; // Excluyendo bases de sistema
 
@@ -34,6 +38,7 @@ namespace sanitizacionMejorado
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+
 
                             while (reader.Read())
                             {
@@ -45,17 +50,29 @@ namespace sanitizacionMejorado
                                 radioButton.CheckedChanged += RadioButton_CheckedChanged;
                                 flowDB.Controls.Add(radioButton);
 
+
                             }
+
                         }
                     }
+
                     connection.Close();
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                flagConexion = false;
+                //MessageBox.Show("Error\n" + ex.ToString(), "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.ToString());
             }
+            if (flagConexion)
+            {
+
+                lblConexionVerified.Text = "Conexión establecida";
+            }
+            else
+                lblConexionVerified.Text = "No se ha podido establecer conexión";
         }
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -66,12 +83,7 @@ namespace sanitizacionMejorado
                 connectionStringBuilder.InitialCatalog = dataBase;
 
             }
-            else
-            {
-                connectionStringBuilder.DataSource = "";
-                flagConexion = false;
-                lblConexionVerified.Text = "";
-            }
+
         }
 
         private void btnProbarConexion_Click(object sender, EventArgs e)
@@ -86,7 +98,7 @@ namespace sanitizacionMejorado
                     connectionStringBuilder.InitialCatalog = dataBase;
                     connectionStringBuilder.UserID = txtUsuario.Text;
                     connectionStringBuilder.Password = txtPassword.Text;
-                    //connectionStringBuilder.IntegratedSecurity = true;
+                    //  connectionStringBuilder.IntegratedSecurity = false;
                     using (SqlConnection connection = new SqlConnection(connectionStringBuilder.ToString()))
                     {
                         connection.Open();
@@ -122,7 +134,7 @@ namespace sanitizacionMejorado
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
-            if (flagConexion)
+            if (flagConexion && dataBase != "")
             {
                 try
                 {
